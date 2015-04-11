@@ -65,8 +65,8 @@ public class DatabaseUpdater extends DatabaseHandler {
         try {
             conn = createConnection(databaseConnection);
             Database database = createDatabase(conn);
-            Liquibase liquibase = new Liquibase(tempChangelog.get().getCanonicalPath(), new FileSystemResourceAccessor(), database);            
-            liquibase.update(null);
+            Liquibase liquibase = new Liquibase(tempChangelog.get().getCanonicalPath(), new FileSystemResourceAccessor(), database);      
+            liquibase.update((String) null);
             tempChangelog.invalidate();
         } finally {
             disconnect(databaseConnection);

@@ -4,20 +4,27 @@
 
     <groupId>com.wcs</groupId>
     <artifactId>LiquifaceMaven</artifactId>
-    <version>1.0</version>
+    <version>1.1.0-SNAPSHOT</version>
     <packaging>nbm</packaging>
 
     <name>Liquiface</name>
-
-    <description>
-        GUI for Liquibase
-    </description>
+    <description>GUI for Liquibase</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <netbeans.version>RELEASE712</netbeans.version>
+        <netbeans.version>RELEASE802</netbeans.version>
         <netbeans.run.params.ide/>
         <netbeans.run.params>${netbeans.run.params.ide}</netbeans.run.params>
+        
+        <!-- Library versions. -->
+        <version.beansbinding>1.2.1</version.beansbinding>
+        <version.commons-io>1.3.2</version.commons-io>
+        <version.liquibase>3.3.2</version.liquibase>
+        <version.guava>14.0</version.guava>
+        <version.junit>4.10</version.junit>
+        
+        <!-- Plugin versions. -->
+        <version.nbm-plugin>3.14</version.nbm-plugin>
     </properties>
 
     <repositories>
@@ -29,24 +36,13 @@
         <repository>
             <id>netbeans</id>
             <name>NetBeans</name>
-            <url>http://bits.netbeans.org/maven2/</url>
+            <url>http://bits.netbeans.org/nexus/content/groups/netbeans</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-        <repository>
-            <url>http://repo1.maven.org/maven2/</url>
-            <id>junit_4</id>
-            <layout>default</layout>
-            <name>Repository for library Library[junit_4]</name>
-        </repository>
-        <repository>
-            <name>nexus</name>
-            <id>nexus</id>
-            <url>http://nexus.wcs.local:8081/nexus/content/groups/public</url>
-        </repository>
     </repositories>
-
+    
     <dependencies>
         <dependency>
             <groupId>org.netbeans.api</groupId>
@@ -97,37 +93,37 @@
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-modules-db</artifactId>
             <version>${netbeans.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <version>2.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>1.3.2</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.10</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>14.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jdesktop</groupId>
-            <artifactId>beansbinding</artifactId>
-            <version>1.2.1</version>
-        </dependency>
+        </dependency>        
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-modules-javahelp</artifactId>
             <version>${netbeans.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${version.liquibase}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${version.commons-io}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${version.junit}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${version.guava}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jdesktop</groupId>
+            <artifactId>beansbinding</artifactId>
+            <version>${version.beansbinding}</version>
+        </dependency>        
     </dependencies>
 
     <build>
@@ -144,13 +140,12 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>nbm-maven-plugin</artifactId>
-                <version>3.9</version>
+                <version>${version.nbm-plugin}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <useOSGiDependencies>false</useOSGiDependencies>
                 </configuration>
             </plugin>
-
             <plugin>
                 <!-- NetBeans 6.9+ requires JDK 6 -->
                 <groupId>org.apache.maven.plugins</groupId>
@@ -161,7 +156,6 @@
                     <target>1.6</target>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -182,7 +176,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>nbm-maven-plugin</artifactId>
-                        <version>3.9</version>
+                        <version>${version.nbm-plugin}</version>
                         <extensions>true</extensions>
                         <configuration>
                             <author>Webstar Csoport Kft.</author>
@@ -204,11 +198,9 @@
                             <organizationName>Webstar Csoport Kft.</organizationName>
                             <inceptionYear>2013</inceptionYear>
                             <projectName>Liquiface - GUI for Liquibase</projectName>
-
                             <includes>
                                 <include>**/*.java</include>
                             </includes>
-
                             <dryRun>false</dryRun>
                             <canUpdateCopyright>false</canUpdateCopyright>
                             <canUpdateDescription>false</canUpdateDescription>
@@ -228,4 +220,5 @@
             </build>
         </profile>
     </profiles>
+    
 </project>

@@ -37,8 +37,11 @@ import liquibase.changelog.ChangeLogParameters;
 import liquibase.changelog.ChangeSet;
 import liquibase.changelog.DatabaseChangeLog;
 import liquibase.database.Database;
-import liquibase.diff.Diff;
+import liquibase.diff.DiffGeneratorFactory;
 import liquibase.diff.DiffResult;
+import liquibase.diff.compare.CompareControl;
+import liquibase.diff.output.DiffOutputControl;
+import liquibase.diff.output.changelog.DiffToChangeLog;
 import liquibase.parser.core.xml.XMLChangeLogSAXParser;
 import liquibase.resource.FileSystemResourceAccessor;
 import org.netbeans.api.db.explorer.DatabaseConnection;
@@ -72,12 +75,10 @@ public class DatabaseChangeLoader extends DatabaseHandler implements ChangeLoade
                 return;
             }
             Database database = createDatabase(conn);
-            String defaultSchema = null;
-            Diff diff = new Diff(database, defaultSchema);
-            diff.setDiffTypes(null);
-            DiffResult diffResult = diff.compare();
-            diffResult.setChangeSetAuthor("liquface");
-            diffResult.printChangeLog(getChangeLogFile(), database);
+            DiffResult diffResults = DiffGeneratorFactory.getInstance().compare(database, null, CompareControl.STANDARD);
+            DiffToChangeLog diffToChangelog = new DiffToChangeLog(diffResults, new DiffOutputControl());
+            diffToChangelog.setChangeSetAuthor("liquiface");
+            diffToChangelog.print(getChangeLogFile());
         } catch (Exception ex) {
             logger.log(Level.SEVERE, null, ex);
         } finally {

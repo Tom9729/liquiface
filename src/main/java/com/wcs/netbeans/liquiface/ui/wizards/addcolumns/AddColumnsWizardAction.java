@@ -32,6 +32,7 @@ import com.wcs.netbeans.liquiface.model.Table;
 import com.wcs.netbeans.liquiface.ui.wizards.AbstractChangeWizardAction;
 import java.util.ArrayList;
 import java.util.List;
+import liquibase.change.AddColumnConfig;
 import liquibase.change.Change;
 import liquibase.change.ColumnConfig;
 import liquibase.change.core.AddColumnChange;
@@ -68,7 +69,7 @@ public final class AddColumnsWizardAction extends AbstractChangeWizardAction {
         AddColumnChange addColumnChange = new AddColumnChange();
         addColumnChange.setTableName(table.getName());
         for (ColumnConfig columnConfig : columnConfigs) {
-            addColumnChange.addColumn(columnConfig);
+            addColumnChange.addColumn((AddColumnConfig) columnConfig);
         }
         return addColumnChange;
     }

@@ -48,7 +48,7 @@ public class ColumnFactory {
             column.setAutoIncrement(config.isAutoIncrement());
         }
 
-        column.setPrimaryKey(config.isPrimaryKey());
+        column.setPrimaryKey(ColumnConfigUtil.isPrimaryKey(config));
         column.setNullable(ColumnConfigUtil.isNullable(config));
 
         return column;

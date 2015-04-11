@@ -58,7 +58,7 @@ public class SimpleChangeStore implements ChangeStore {
         else {
             id = item.getId();
         }
-        return new ChangeSet(id, author, false, false, null, null, null);
+        return new ChangeSet(id, author, false, false, null, null, null, null);
     }
 
     @Override

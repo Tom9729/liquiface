@@ -42,6 +42,14 @@ public class ColumnConfigUtil {
         //DEFAULT
         return false;        
     }
+    
+    public static boolean isPrimaryKey(ColumnConfig config) {
+        if (config.getConstraints() != null
+                && config.getConstraints().isPrimaryKey() != null){
+            return config.getConstraints().isPrimaryKey();
+        }
+        return false;
+    }
 
     public static boolean isNullable(ColumnConfig config) {
         if (config.getConstraints() != null

@@ -28,7 +28,7 @@ package com.wcs.netbeans.liquiface.ui.wizards.column;
 
 import com.wcs.netbeans.liquiface.facade.ColumnTypeFacade;
 import com.wcs.netbeans.liquiface.model.util.ColumnConfigUtil;
-import java.awt.event.ItemEvent;
+import liquibase.change.AddColumnConfig;
 import liquibase.change.ColumnConfig;
 import liquibase.change.ConstraintsConfig;
 
@@ -46,7 +46,7 @@ public class UiColumnPanel extends javax.swing.JPanel {
     }
 
     public ColumnConfig getColumnConfig() {
-        ColumnConfig columnConfig = new ColumnConfig();
+        ColumnConfig columnConfig = new AddColumnConfig();
         columnConfig.setName(columnBean.getName());
         columnConfig.setType(columnBean.getType());
         columnConfig.setAutoIncrement(columnBean.isAutoIncrement());

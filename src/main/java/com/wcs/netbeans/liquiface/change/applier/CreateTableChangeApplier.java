@@ -61,7 +61,7 @@ public class CreateTableChangeApplier implements ChangeApplier {
             if (ColumnConfigUtil.isUnique(config)){
                 table.addUniqueConstraint(UniqueConstraintFactory.createUniqueConstraint(table, column));
             }
-            if (config.isPrimaryKey()){
+            if (ColumnConfigUtil.isPrimaryKey(config)) {
                 primaryKeyColumns.add(column);
             }
         }
