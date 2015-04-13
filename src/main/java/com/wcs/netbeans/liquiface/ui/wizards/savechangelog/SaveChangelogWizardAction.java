@@ -64,6 +64,7 @@ public class SaveChangelogWizardAction extends AbstractWizardAction {
         System.out.format("Write changesets to file: %s with changeset mode %s%n",
                 changelogFile.getAbsolutePath(), changeSetMode.name());
         ModelFacade.getInstance().writeChangeSetsToFile(changelogFile, changeSetMode);
+        ModelFacade.getInstance().clearChanges();
         
         String message = "Changesets written to file " + changelogFile.getAbsolutePath();
         NotifyDescriptor nd = new NotifyDescriptor.Message(message, NotifyDescriptor.INFORMATION_MESSAGE);

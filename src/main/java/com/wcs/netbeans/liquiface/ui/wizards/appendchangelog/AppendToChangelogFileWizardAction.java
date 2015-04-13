@@ -68,6 +68,7 @@ public final class AppendToChangelogFileWizardAction extends AbstractWizardActio
         
         copyFile(originalChangelog, copyOfOriginalChangelog);
         writeChangeSetsToFile(changelogWithNewChanges, changeSetMode);
+        ModelFacade.getInstance().clearChanges();
         
         String message = null;
         
