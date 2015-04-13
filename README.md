@@ -1,5 +1,6 @@
 Liquiface - A simpified interface for LiquiBase
 =========
+[![Build Status](https://travis-ci.org/Tom9729/liquiface.svg?branch=master)](https://travis-ci.org/Tom9729/liquiface)
 
 The idea
 
